@@ -1,0 +1,7 @@
+<h2> <%= @name %> </h2>
+  <ol>
+    <% @routes.each do |route| %>
+      <li><a href="/locations/<%= params[:id] %>/<%= route.id %>"><%= route.title %></a></li>
+    <% end %>
+  </ol>
+</table>
