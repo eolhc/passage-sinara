@@ -10,6 +10,11 @@
 <body>
   <h1> PASSAGE <h1>
 
+    <p>session <%= session[:user_id] %></p>
+    <a href="/session/new">login</a>
+
+    <a href="/locations/new">new place</a>
+
 
     <%= yield %>
 

@@ -1,0 +1,18 @@
+<h2>ASK PASSERS</h2>
+<form action="/locations/<%= params[:locationid]%>/<%= params[:routeid]%>" method="post">
+
+  <label for="">Title</label>
+  <input name="title" type="text" value="<%=@route.title%>">
+
+  <label for="">Summary</label>
+  <textarea name="description" id="" cols="30" rows="10"><%= @route.description %></textarea>
+
+  <label for="">Image</label>
+  <textarea name="img" id="" cols="30" rows="10"><%= @route.img %></textarea>
+
+  <button>UPDATE PASSAGE</button>
+</form>
+
+<form action="/locations/<%=@route.location_id%>/<%= @route.id %>/delete" method="post">
+  <button>DELETE PASSAGE</button>
+</form>

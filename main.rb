@@ -13,6 +13,8 @@ require_relative 'models/step'
 
 require 'pry'
 
+enable :sessions
+
 get '/' do
   #display three random location's most popular route's img
   @randLocations = Location.order("RANDOM()")
@@ -43,8 +45,8 @@ post '/locations' do
 
 end
 #show locations page
-get '/locations/:id' do
-  @location = Location.find(params[:id])
+get '/locations/:locationid' do
+  @location = Location.find(params[:locationid])
   @name = @location.name
   @routes = @location.routes
 
@@ -53,16 +55,16 @@ end
 
 #create new route entry
 #this should link from the unique location page
-get "/locations/:id/new" do
+get "/locations/:locationid/new" do
 
   erb :route_new
 end
 
 #post new route
-post '/locations/:id' do
+post '/locations/:locationid' do
   @new_route = Route.new
   @new_route.title = params[:title]
-  @new_route.location_id = Location.find(params[:id])
+  @new_route.location_id = params[:locationid]
   @new_route.date_authored = Time.now.strftime("%Y-%m-%d")
   @new_route.description = params[:description]
   @new_route.author_id = User.all.find_by(username: "#{params[:username]}").id
@@ -76,10 +78,8 @@ post '/locations/:id' do
 end
 
 #show routes page
-get '/locations/:name/:id' do
-  @location = Location.find(params[:id])
-  @loc_id = params[:id]
-  @route = Route.where('id = ? AND location_id = ?', params[:id], @location.id)[0]
+get '/locations/:locationid/:routeid' do
+  @route = Route.where('id = ? AND location_id = ?', params[:routeid], params[:locationid])[0]
   @date = @route.date_authored
   @title = @route.title
   @description = @route.description
@@ -92,13 +92,67 @@ end
 #anything with ID should be below anything with word
 
 #show edit route form
-get '/locations/:name/:id/edit' do
+get '/locations/:locationid/:routeid/edit' do
+  @route = Route.where('id = ? AND location_id = ?', params[:routeid], params[:locationid])[0]
 
-  erb :edit_route
+  erb :route_edit
 end
 
+#update route
+post '/locations/:locationid/:routeid' do
+  @routeid = params[:routeid]
+  @locid = params[:locationid]
+  @route = Route.where('id = ? AND location_id = ?', @routeid, @locid)[0]
 
-post '/locations/:name/:id' do
+  @route.update(title: params[:title], date_authored: Time.now.strftime("%Y-%m-%d"), description: params[:description], img: params[:img])
 
-  redirect to '/'
+  redirect to "/locations/#{@locid}/#{@routeid}"
+end
+
+#delete route
+post '/locations/:locationid/:routeid/delete' do
+  @route = Route.where('id = ? AND location_id = ?', params[:routeid], params[:locationid])[0]
+  @route.destroy
+
+  redirect to '/locations/:locationid'
+end
+
+get '/session/new' do
+
+  erb :session_new
+end
+
+post '/session' do
+  user = User.find_by(username: params[:username])
+
+  if user && user.authenticate(params[:password])
+    #u are fine, lemme create a session for u
+    session[:user_id] = user.id
+
+    redirect to '/'
+  else #whoaare you
+    erb :session_new
+  end
+end
+
+post '/register' do
+  user = User.new
+  user.email = params[:email]
+  user.username = params[:username]
+  user.password = params[:password]
+  if User.find_by(username: params[:username]) != nil
+    @msg = "username already taken pls pick another one"
+    erb :session_new
+  elsif User.find_by(email: params[:email]) != nil
+    @msg = "email already in use"
+    erb :session_new
+  else user.save
+      redirect to '/session/new'
+  end
+end
+
+delete '/session' do
+  session[:user_id] = nil
+  #remove the session
+  redirect to '/session/new'
 end
