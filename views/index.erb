@@ -4,7 +4,7 @@
   <% @randLocations.each do |location| %>
     <% if location.routes.first != nil %>
     <a href="/locations/<%= location.id %>">
-      <img src="<%=location.routes.first.img%>" alt="">
+      <img src="<%=location.routes.first.img.url%>" alt="">
     </a>
     <% end %>
   <% end %>

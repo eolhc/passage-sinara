@@ -5,3 +5,5 @@ gem 'httparty'
 gem 'activerecord'
 gem 'sinatra'
 gem 'pg'
+
+gem 'carrierwave'

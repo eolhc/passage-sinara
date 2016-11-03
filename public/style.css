@@ -8,3 +8,9 @@ body {
   height: 25%;
   display: inline-block;
 }
+
+table tr td a {
+    display:block;
+    height:100%;
+    width:100%;
+}

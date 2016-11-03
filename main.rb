@@ -2,6 +2,11 @@ require 'active_record'
 require 'sinatra'
 require 'sinatra/reloader'
 
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
+require 'fog'
+require 'pry'
+
 require_relative 'db_config'
 require_relative 'models/follower'
 require_relative 'models/image'
@@ -11,7 +16,7 @@ require_relative 'models/user'
 require_relative 'models/vote'
 require_relative 'models/step'
 
-require 'pry'
+
 
 enable :sessions
 
@@ -66,15 +71,15 @@ get '/locations/:locationid' do
   @routes = @location.routes
 
   @routelist = {};
+
     @routes.each do |route|
       @votes = route.votes.count
       @title = route.title
-      @routelist["#{@title}"] = "#{@votes}"
+      @id = route.id
+      @routelist["#{@title}"] = ["#{@votes}","#{@id}"]
     end
 
-  binding.pry
-
-  @orderedlist = @routelist.values.sort
+  @orderedlist = @routelist.sort_by {|key, value| value[0]}.reverse
 
   erb :location
 end
@@ -82,6 +87,7 @@ end
 #create new route entry
 #this should link from the unique location page
 get "/locations/:locationid/new" do
+  @locid = params[:locationid]
 
   erb :route_new
 end
@@ -93,7 +99,7 @@ post '/locations/:locationid' do
   @new_route.location_id = params[:locationid]
   @new_route.date_authored = Time.now.strftime("%Y-%m-%d")
   @new_route.description = params[:description]
-  @new_route.author_id = User.all.find_by(username: "#{params[:username]}").id
+  @new_route.author_id = session[:user_id]
   @new_route.img = params[:img]
 
   if @new_route.save
@@ -108,11 +114,28 @@ get '/locations/:locationid/:routeid' do
   @date = @route.date_authored
   @title = @route.title
   @description = @route.description
-  @votes = @route.votes
+  @votes = @route.votes.count
   @author_id = @route.author_id
 
   erb :route
 end
+
+post '/locations/:locationid/:routeid/bump' do
+  @locid = params[:locationid]
+  @routeid = params[:routeid]
+
+  @newvote = Vote.new
+  @newvote.user_id = session[:user_id]
+  @newvote.route_id = @routeid
+  if Vote.where('user_id = ? AND route_id = ?', session[:user_id], @routeid)[0] != nil
+    @msg = "you can't vote again"
+    redirect to "/locations/#{@locid}/#{@routeid}"
+  else
+    @newvote.save
+    redirect to "/locations/#{@locid}/#{@routeid}"
+  end
+end
+
 
 #anything with ID should be below anything with word
 
@@ -139,7 +162,7 @@ post '/locations/:locationid/:routeid/delete' do
   @route = Route.where('id = ? AND location_id = ?', params[:routeid], params[:locationid])[0]
   @route.destroy
 
-  redirect to '/locations/:locationid'
+  redirect to "/locations/#{params[:location_id]}"
 end
 
 get '/session/new' do

@@ -1,5 +1,8 @@
 require 'active_record'
-
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
+require 'fog'
+require 'pry'
 require_relative 'db_config'
 require_relative 'models/follower'
 require_relative 'models/image'

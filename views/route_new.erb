@@ -1,5 +1,5 @@
 <h2>ASK PASSERS</h2>
-<form action="/locations/<%= params[:id]%>" method="post">
+<form action="/locations/<%= @locid %>" method="post" enctype="multipart/form-data">
   <label for="">Author</label>
   <input name="username" type="text">
 
@@ -10,7 +10,9 @@
   <textarea name="description" id="" cols="30" rows="10"></textarea>
 
   <label for="">Image</label>
-  <textarea name="img" id="" cols="30" rows="10"></textarea>
+    <input type="file" name="img" />
+    <button>upload</button>
+  </form>
 
   <button>SHARE PASSAGE</button>
 </form>

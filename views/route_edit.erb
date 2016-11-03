@@ -1,5 +1,5 @@
 <h2>ASK PASSERS</h2>
-<form action="/locations/<%= params[:locationid]%>/<%= params[:routeid]%>" method="post">
+<form action="/locations/<%= params[:locationid]%>/<%= params[:routeid]%>" method="post" enctype="multipart/form-data">
 
   <label for="">Title</label>
   <input name="title" type="text" value="<%=@route.title%>">
@@ -8,7 +8,10 @@
   <textarea name="description" id="" cols="30" rows="10"><%= @route.description %></textarea>
 
   <label for="">Image</label>
-  <textarea name="img" id="" cols="30" rows="10"><%= @route.img %></textarea>
+    <input type="file" name="img" />
+    <button>upload</button>
+  </form>
+
 
   <button>UPDATE PASSAGE</button>
 </form>
