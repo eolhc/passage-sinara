@@ -1,16 +1,100 @@
 body {
   margin: 0 auto;
   width: 100%;
+  font-family: 'Open Sans';
+  font-size: 10px;
+}
+
+
+.search button {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  background-image: url('https://cdn1.iconfinder.com/data/icons/hawcons/32/698956-icon-111-search-128.png');
+  border: none;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  vertical-align:middle;
+  margin-left: 5px;
+}
+
+section {
+  margin: 0 auto;
+  text-align: center;
 }
 
 .banner img {
   width: 40%;
   height: 25%;
   display: inline-block;
+  overflow: hidden;
+}
+
+nav {
+  margin: 0 auto;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  background-color: white;
+  height: 80px;
+}
+
+nav ul {
+  margin: 0 auto;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+}
+
+nav ul li {
+  display: inline-block;
+  list-style-type: none;
+  text-align: center;
+}
+
+nav ul li a, nav ul li form {
+  color: black;
+  margin-right:30px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 11px;
+}
+
+nav ul li:first-child {
+  margin-right: auto;
+  display: block;
+}
+
+form {
+  display: inline-block;
+}
+
+
+.logo img {
+  width: 50px;
+  margin-left: 5px;
 }
 
 table tr td a {
-    display:block;
-    height:100%;
-    width:100%;
+  display:block;
+  height:100%;
+  width:100%;
+}
+
+.logout button {
+   background:none!important;
+   border:none;
+   padding:0!important;
+   font: inherit;
+   /*border is optional*/
+   border-bottom:0px solid #444;
+   cursor: pointer;
+   text-decoration: none;
+}
+
+.new {
+  vertical-align: middle;
 }

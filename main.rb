@@ -16,8 +16,6 @@ require_relative 'models/user'
 require_relative 'models/vote'
 require_relative 'models/step'
 
-
-
 enable :sessions
 
 helpers do
@@ -54,8 +52,7 @@ end
 post '/locations' do
   @new_loc = Location.new
   @new_loc.name = params[:location]
-
-  @new_loc.user_id = User.all.find_by(username: "#{params[:username]}").id
+  @new_loc.user_id = session[:user_id]
 
   if @new_loc.save
     redirect to '/'

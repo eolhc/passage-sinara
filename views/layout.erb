@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <title>passage</title>
 </head>
+
 <body>
-  <h1> PASSAGE <h1>
+  <nav>
+    <ul>
+      <li><a href="/" class="logo"><img src="/media/120px-Chem_P.svg.png" alt="passage"></a></li>
 
-    <% if logged_in? %>
-    logged in as <%= current_user.username %>
-    <form action="/session" method="post">
-      <input name="_method" type="hidden" value="delete">
-      <button>logout</button>
-    </form>
-    <% else %>
-      <a href="/session/new">login</a>
-      <a href="/register">register</a>
-    <% end %>
+      <li><form action="/search" method="get" class="search">
+        <input name="locationid" type="text" placeholder="Search...">
+          <button></button>
+      </form></li>
 
-    <a href="/locations/new">new place</a>
-
+      <li><a href="/locations/new">new place</a></li>
+      <% if logged_in? %>
+      <li><a href="/"><%= current_user.username %></a></li>
+      <li><form action="/session" method="post">
+        <input name="_method" type="hidden" value="delete">
+      <span class="logout">
+        <button>logout</button>
+      </span>
+      </form></li>
+      <% else %>
+        <li><a href="/session/new">login</a></li>
+        <li><a href="/register">register</a></li>
+      <% end %>
+    </ul>
+  </nav>
 
     <%= yield %>
 

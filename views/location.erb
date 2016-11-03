@@ -1,17 +1,19 @@
-<h2> <%= @name %> </h2>
-  <table>
-    <% @orderedlist.each do |key, value| %>
-      <tr>
-        <td>
-          <a href="/locations/<%= params[:locationid] %>/<%= value[1] %>">
-            <%= value[0] %>
-          </a>
-        </td>
+<section>
+  <h2> <%= @name %> </h2>
+    <table>
+      <% @orderedlist.each do |key, value| %>
+        <tr>
           <td>
             <a href="/locations/<%= params[:locationid] %>/<%= value[1] %>">
-              <%= key %>
+              <%= value[0] %>
             </a>
           </td>
-      <tr>
-    <% end %>
-  </table>
+            <td>
+              <a href="/locations/<%= params[:locationid] %>/<%= value[1] %>">
+                <%= key %>
+              </a>
+            </td>
+        <tr>
+      <% end %>
+    </table>
+</section>

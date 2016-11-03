@@ -1,12 +1,14 @@
-<p> <%= @title %></p>
-date: <%= @date %>
-summary: <%= @description %>
-# votes: <%= @votes %>
-author: <%= @author_id %>
+<section>
+  <p> <%= @title %></p>
+  date: <%= @date %>
+  summary: <%= @description %>
+  # votes: <%= @votes %>
+  author: <%= @author_id %>
 
-<form action="/locations/<%=@route.location_id%>/<%=@route.id%>/bump" method="post">
-<button>vote</button>
-</form>
-<%= @msg %>
+  <form action="/locations/<%=@route.location_id%>/<%=@route.id%>/bump" method="post">
+  <button>vote</button>
+  </form>
+  <%= @msg %>
 
-<a href="/locations/<%=@route.location_id%>/<%=@route.id%>/edit">edit</a>
+  <a href="/locations/<%=@route.location_id%>/<%=@route.id%>/edit">edit</a>
+</section>
