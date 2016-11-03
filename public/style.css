@@ -72,24 +72,50 @@ form {
   display: inline-block;
 }
 
-
 .logo img {
   width: 50px;
   margin-left: 5px;
+  margin-top:5px;
+}
+
+
+table {
+  margin: 2% auto;
+  font-size: 12px;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+th {
+  height: 4em;
+  margin-top: 2%;
+}
+
+tr {
+  width: 400px;
+}
+
+td {
+  padding: 5px 10px;
+  margin: 0;
 }
 
 table tr td a {
-  display:block;
+  display:inline-block;
   height:100%;
-  width:100%;
+  text-decoration: none;
 }
+
+table tr td img {
+  vertical-align: middle;
+}
+
 
 .logout button {
    background:none!important;
    border:none;
    padding:0!important;
    font: inherit;
-   /*border is optional*/
    border-bottom:0px solid #444;
    cursor: pointer;
    text-decoration: none;
@@ -97,4 +123,15 @@ table tr td a {
 
 .new {
   vertical-align: middle;
+}
+
+.nottext {
+  width: 50px;
+  text-align: center;
+  background-color: #00C4C0;
+}
+
+.text {
+  width: 300px;
+  text-align: left;
 }

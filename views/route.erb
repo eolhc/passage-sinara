@@ -1,9 +1,21 @@
 <section>
-  <p> <%= @title %></p>
-  date: <%= @date %>
-  summary: <%= @description %>
-  # votes: <%= @votes %>
-  author: <%= @author_id %>
+  <h2> <%= @title %></h2>
+  <table>
+    <tr>
+      <td>date:</td>
+      <td><%= @date %></td>
+      <td># votes:</td>
+      <td><%= @votes %></td>
+    </tr>
+    <tr>
+      <td>summary</td>
+      <td colspan="3"><%= @description %></td>
+    </tr>
+    <tr>
+      <td>author:</td>
+      <td><%= @author_id %></td>
+    </tr>
+  </table>
 
   <form action="/locations/<%=@route.location_id%>/<%=@route.id%>/bump" method="post">
   <button>vote</button>

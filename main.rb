@@ -61,6 +61,13 @@ post '/locations' do
 #need new and save here
 
 end
+
+post '/locations/search' do
+  @results = Location.where(name: params[:location])
+
+erb :search_results
+end
+
 #show locations page
 get '/locations/:locationid' do
   @location = Location.find(params[:locationid])

@@ -1,14 +1,16 @@
 <section>
   <h2> <%= @name %> </h2>
     <table>
+      <th colspan="3">Passages provided:</th>
       <% @orderedlist.each do |key, value| %>
         <tr>
-          <td>
+          <td class="nottext">
+            <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/492589-200.png" alt="" width="20px">
             <a href="/locations/<%= params[:locationid] %>/<%= value[1] %>">
               <%= value[0] %>
             </a>
           </td>
-            <td>
+            <td class="text">
               <a href="/locations/<%= params[:locationid] %>/<%= value[1] %>">
                 <%= key %>
               </a>
