@@ -7,20 +7,19 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <title>passage</title>
+  <title>Passage</title>
 </head>
 
 <body>
   <nav>
     <ul>
-      <li><a href="/" class="logo"><img src="/media/120px-Chem_P.svg.png" alt="passage"></a></li>
+      <li><a href="/" class="logo"><img src="/media/p.png" alt="passage"></a></li>
 
       <li><form action="/locations/search" method="post" class="search">
         <input name="location" type="text" placeholder="Search...">
           <button></button>
       </form></li>
 
-      <li><a href="/locations/new">new place</a></li>
       <% if logged_in? %>
       <li><a href="/"><%= current_user.username %></a></li>
       <li><form action="/session" method="post">

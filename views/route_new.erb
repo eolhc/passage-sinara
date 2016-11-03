@@ -1,20 +1,10 @@
 <section>
-  <h2>ASK PASSERS</h2>
-    <form action="/locations/<%= @locid %>" method="post" enctype="multipart/form-data">
-      <label for="">Author</label>
-      <input name="username" type="text">
-
-      <label for="">Title</label>
-      <input name="title" type="text">
-
-      <label for="">Summary</label>
-      <textarea name="description" id="" cols="30" rows="10"></textarea>
-
-      <label for="">Image</label>
-        <input type="file" name="img" />
-        <button>upload</button>
-      </form>
-
+  <h2>SHARE YOUR PASSAGE</h2>
+    <form action="/locations/<%= @locid %>" method="post" enctype="multipart/form-data" class="passageshare">
+      <input name="title" type="text" placeholder="Title">
+      <textarea name="description" id="" cols="30" rows="10" placeholder="Share your Passage"></textarea>
+      <input type="file" name="img" />
+      <button>upload</button>
       <button>SHARE PASSAGE</button>
     </form>
 </section>

@@ -5,25 +5,16 @@ body {
   font-size: 10px;
 }
 
-
-.search button {
-  width: 20px;
-  height: 20px;
-  background-color: white;
-  background-image: url('https://cdn1.iconfinder.com/data/icons/hawcons/32/698956-icon-111-search-128.png');
-  border: none;
-  background-repeat: no-repeat;
-  background-size: 20px;
-  vertical-align:middle;
-  margin-left: 5px;
-}
-
 section {
   margin: 0 auto;
   text-align: center;
 }
 
-.banner img {
+table tr .notbody {
+  font-size: 9px;
+}
+
+.banner img, .new img {
   width: 40%;
   height: 25%;
   display: inline-block;
@@ -80,7 +71,7 @@ form {
 
 
 table {
-  margin: 2% auto;
+  margin: 0 auto;
   font-size: 12px;
   text-align: left;
   border-collapse: collapse;
@@ -134,4 +125,55 @@ table tr td img {
 .text {
   width: 300px;
   text-align: left;
+}
+
+label {
+  display: block;
+}
+
+.vote button {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  background-image: url('https://d30y9cdsu7xlg0.cloudfront.net/png/492589-200.png');
+  border: none;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  vertical-align:middle;
+  margin-left: 5px;
+}
+
+.search button {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  background-image: url('https://cdn1.iconfinder.com/data/icons/hawcons/32/698956-icon-111-search-128.png');
+  border: none;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  vertical-align:middle;
+  margin-left: 5px;
+}
+
+.passageshare input {
+  width: 400px;
+  display: block;
+  margin: 0 auto;
+}
+
+textarea {
+  width: 400px;
+  margin: 0 auto;
+  display: block;
+  outline: none;
+  border: 1px solid #d0d6e0;
+  vertical-align: text-top;
+}
+
+.passageshare button {
+  display: inline-block;
+}
+
+.right {
+  text-align: right;
 }

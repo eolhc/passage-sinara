@@ -119,11 +119,13 @@ get '/locations/:locationid/:routeid' do
   @title = @route.title
   @description = @route.description
   @votes = @route.votes.count
-  @author_id = @route.author_id
+  @author_id = User.find(@route.author_id).username
+  @img = @route.img
 
   erb :route
 end
 
+#vote
 post '/locations/:locationid/:routeid/bump' do
   @locid = params[:locationid]
   @routeid = params[:routeid]
@@ -169,6 +171,7 @@ post '/locations/:locationid/:routeid/delete' do
   redirect to "/locations/#{params[:location_id]}"
 end
 
+#new session
 get '/session/new' do
 
   erb :session_new

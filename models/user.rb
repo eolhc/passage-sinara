@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
   has_many :followers
   has_many :votes
+  belongs_to :routes
   mount_uploader :avatar, MyUploader
-
 
 end

@@ -30,7 +30,7 @@ class Route < ActiveRecord::Base
   belongs_to :location
   has_many :steps
   has_many :votes
-  has_one :users
+  has_one :user
 
   mount_uploader :img, MyUploader
 
