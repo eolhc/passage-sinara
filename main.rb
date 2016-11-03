@@ -15,6 +15,21 @@ require 'pry'
 
 enable :sessions
 
+helpers do
+  def logged_in?
+    !!current_user
+  end
+
+  def current_user
+    if User.find_by(id: session[:user_id])
+      User.find_by(id: session[:user_id])
+    else
+      nil
+    end
+  end
+
+end
+
 get '/' do
   #display three random location's most popular route's img
   @randLocations = Location.order("RANDOM()")
@@ -50,6 +65,17 @@ get '/locations/:locationid' do
   @name = @location.name
   @routes = @location.routes
 
+  @routelist = {};
+    @routes.each do |route|
+      @votes = route.votes.count
+      @title = route.title
+      @routelist["#{@title}"] = "#{@votes}"
+    end
+
+  binding.pry
+
+  @orderedlist = @routelist.values.sort
+
   erb :location
 end
 
@@ -69,7 +95,6 @@ post '/locations/:locationid' do
   @new_route.description = params[:description]
   @new_route.author_id = User.all.find_by(username: "#{params[:username]}").id
   @new_route.img = params[:img]
-  # @new_route.votes = 0
 
   if @new_route.save
     redirect to "/locations/#{@new_route.location_id}/#{@new_route.id}"
@@ -123,16 +148,21 @@ get '/session/new' do
 end
 
 post '/session' do
-  user = User.find_by(username: params[:username])
+  @user = User.find_by(username: params[:username])
 
-  if user && user.authenticate(params[:password])
+  if @user && @user.authenticate(params[:password])
     #u are fine, lemme create a session for u
-    session[:user_id] = user.id
+    session[:user_id] = @user.id
 
     redirect to '/'
   else #whoaare you
     erb :session_new
   end
+end
+
+get '/register' do
+
+  erb :register
 end
 
 post '/register' do
@@ -142,10 +172,10 @@ post '/register' do
   user.password = params[:password]
   if User.find_by(username: params[:username]) != nil
     @msg = "username already taken pls pick another one"
-    erb :session_new
+    erb :register
   elsif User.find_by(email: params[:email]) != nil
     @msg = "email already in use"
-    erb :session_new
+    erb :register
   else user.save
       redirect to '/session/new'
   end

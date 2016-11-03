@@ -10,8 +10,16 @@
 <body>
   <h1> PASSAGE <h1>
 
-    <p>session <%= session[:user_id] %></p>
-    <a href="/session/new">login</a>
+    <% if logged_in? %>
+    logged in as <%= current_user.username %>
+    <form action="/session" method="post">
+      <input name="_method" type="hidden" value="delete">
+      <button>logout</button>
+    </form>
+    <% else %>
+      <a href="/session/new">login</a>
+      <a href="/register">register</a>
+    <% end %>
 
     <a href="/locations/new">new place</a>
 

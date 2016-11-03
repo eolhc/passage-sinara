@@ -1,7 +1,8 @@
-<h2> <%= @name %> </h2>
-  <ol>
-    <% @routes.each do |route| %>
-      <li><a href="/locations/<%= params[:locationid] %>/<%= route.id %>"><%= route.title %></a></li>
+<h2><%= @name %></h2>
+    <% @orderedroutes.each do |route| %>
+      <tr>
+        <a href="/locations/<%= params[:locationid] %>/<%= route.id %>"><%= route.votes.count %>
+        <a href="/locations/<%= params[:locationid] %>/<%= route.id %>"><%= route.title %></a></li>
+      </tr>
     <% end %>
-  </ol>
 </table>
