@@ -12,5 +12,3 @@ require_relative 'models/user'
 require_relative 'models/vote'
 require_relative 'models/step'
 require 'pry'
-
-binding.pry

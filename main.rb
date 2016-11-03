@@ -1,7 +1,5 @@
 require 'active_record'
 require 'sinatra'
-require 'sinatra/reloader'
-
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 require 'fog'
