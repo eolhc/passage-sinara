@@ -4,7 +4,8 @@ CREATE TABLE users (
   id SERIAL4 PRIMARY KEY,
   email VARCHAR(300),
   username VARCHAR(20),
-  password_digest VARCHAR(400)
+  password_digest VARCHAR(400),
+  avatar TEXT
 );
 
 CREATE TABLE followers (
@@ -25,7 +26,6 @@ CREATE TABLE routes (
   date_authored VARCHAR(50),
   title VARCHAR(200),
   description TEXT,
-  votes INTEGER,
   author_id INTEGER,
   img VARCHAR(200)
 );

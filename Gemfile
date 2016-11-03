@@ -7,3 +7,4 @@ gem 'sinatra'
 gem 'pg'
 
 gem 'carrierwave'
+gem 'fog'
