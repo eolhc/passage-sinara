@@ -1,7 +1,9 @@
-<section>
-  
-  <h2><span class="popular"> popular passages </h2></span>
+  <div class="welcome">
+    <span class="hello"><p>Go there. Find the best passage to hidden locations.</p></span>
+    <p>Search for a passage or explore popular passages below.</p>
+  </div>
 
+<section>
   <div class="banner">
     <% @randLocations.each do |location| %>
       <% if location.routes.first != nil %>
