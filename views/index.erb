@@ -5,7 +5,10 @@
     <% @randLocations.each do |location| %>
       <% if location.routes.first != nil %>
       <a href="/locations/<%= location.id %>">
-        <img src="<%=location.routes.first.img.url%>" alt="">
+        <div>
+          <img src="<%=location.routes.first.img.url%>" alt="">
+          <h2><span><%=location.name%></span></h2>
+        </div>
       </a>
       <% end %>
     <% end %>
