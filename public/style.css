@@ -214,3 +214,8 @@ textarea {
 .right {
   text-align: right;
 }
+
+h2 .popular{
+  font-size: 28px;
+  text-align: left;
+}
