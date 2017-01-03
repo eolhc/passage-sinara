@@ -1,6 +1,6 @@
 # Passage
 
-[v i e w  &nbsp;&nbsp;  h e r e](wdi-passage.herokuapp.com)
+[v i e w  &nbsp;&nbsp;  h e r e](http://wdi-passage.herokuapp.com)
 
 ## Why
 
@@ -25,4 +25,4 @@ I would like to add user profiles, downvoting features, a web text editor, impro
 :pencil2: postgreSQL  <br />
 :pencil2: ActiveRecord  <br />
 
-[v i e w  &nbsp;&nbsp;  h e r e](wdi-passage.herokuapp.com)
+[v i e w  &nbsp;&nbsp;  h e r e](http://wdi-passage.herokuapp.com)
