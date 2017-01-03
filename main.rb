@@ -16,6 +16,7 @@ require_relative 'models/step'
 
 enable :sessions
 
+
 helpers do
   def logged_in?
     !!current_user
@@ -35,6 +36,7 @@ get '/' do
   # if current user and kickem out if not loggied in - redirect to location or error message
   #display three random location's most popular route's img
   @randLocations = Location.order("RANDOM()")
+  @slideNumber = 0
 
   erb :index
 end
