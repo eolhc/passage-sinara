@@ -32,6 +32,7 @@ helpers do
 end
 
 get '/' do
+  # if current user and kickem out if not loggied in - redirect to location or error message
   #display three random location's most popular route's img
   @randLocations = Location.order("RANDOM()")
 
@@ -54,15 +55,15 @@ post '/locations' do
 
   if @new_loc.save
     redirect to '/'
-  else erb :location_new
+  else
+    erb :location_new
   end
-#need new and save here
-
 end
 
 post '/locations/search' do
   @results = Location.where(name: params[:location])
-
+  #can add in the case insensitive thing
+  # jquery plugin
 erb :search_results
 end
 
@@ -74,12 +75,12 @@ get '/locations/:locationid' do
 
   @routelist = {};
 
-    @routes.each do |route|
-      @votes = route.votes.count
-      @title = route.title
-      @id = route.id
-      @routelist["#{@title}"] = ["#{@votes}","#{@id}"]
-    end
+  @routes.each do |route|
+    @votes = route.votes.count
+    @title = route.title
+    @id = route.id
+    @routelist["#{@title}"] = ["#{@votes}","#{@id}"]
+  end
 
   @orderedlist = @routelist.sort_by {|key, value| value[0]}.reverse
 
@@ -106,7 +107,8 @@ post '/locations/:locationid' do
 
   if @new_route.save
     redirect to "/locations/#{@new_route.location_id}/#{@new_route.id}"
-  else erb :route_new
+  else
+    erb :route_new
   end
 end
 
@@ -132,6 +134,7 @@ post '/locations/:locationid/:routeid/bump' do
   @newvote.user_id = session[:user_id]
   @newvote.route_id = @routeid
   if Vote.where('user_id = ? AND route_id = ?', session[:user_id], @routeid)[0] != nil
+    # if current_user.canVote(route)
     @msg = "you can't vote again"
     redirect to "/locations/#{@locid}/#{@routeid}"
   else
@@ -200,6 +203,9 @@ post '/register' do
   user.password = params[:password]
   if User.find_by(username: params[:username]) != nil
     @msg = "username already taken pls pick another one"
+    # use validations to do this sort of stuff!!
+    # User.errors
+    # @error_message = User.errors[:passwor_too_short]
     erb :register
   elsif User.find_by(email: params[:email]) != nil
     @msg = "email already in use"
