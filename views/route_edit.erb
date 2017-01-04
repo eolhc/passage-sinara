@@ -7,6 +7,13 @@
 
     <label for="">Summary</label>
     <textarea name="description" id="" cols="30" rows="10"><%= @route.description %></textarea>
+    <script>
+      CKEDITOR.replace( 'description', {
+        width: '100%',
+        height: '100%'
+      });
+    </script>
+
 
     <label for="">Image</label>
       <input type="file" name="img" />
