@@ -1,11 +1,8 @@
-<section>
-  <h2>ASK PASSERS</h2>
-  <form action="/locations/<%= params[:locationid]%>/<%= params[:routeid]%>" method="post" enctype="multipart/form-data">
+<section class="edit">
+  <form action="/locations/<%= params[:locationid]%>/<%= params[:routeid]%>" method="post" enctype="multipart/form-data" class="passageshare">
 
-    <label for="">Title</label>
-    <input name="title" type="text" value="<%=@route.title%>">
+    <input name="title" type="text" placeholder="Passage Title" class="route-title" value="<%=@route.title%>">
 
-    <label for="">Summary</label>
     <textarea name="description" id="" cols="30" rows="10"><%= @route.description %></textarea>
     <script>
       CKEDITOR.replace( 'description', {
@@ -13,18 +10,18 @@
         height: '100%'
       });
     </script>
+    </br>
 
-
-    <label for="">Image</label>
       <input type="file" name="img" />
-      <button>upload</button>
+      <button class="share">
+        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+      </button>
     </form>
 
-
-    <button>UPDATE PASSAGE</button>
+  <form action="/locations/<%=@route.location_id%>/<%= @route.id %>/delete" method="post" class="delete" class="delete">
+    <button>
+      <i class="fa fa-trash-o" aria-hidden="true"></i>
+    </button>
   </form>
 
-  <form action="/locations/<%=@route.location_id%>/<%= @route.id %>/delete" method="post">
-    <button>DELETE PASSAGE</button>
-  </form>
 </section>

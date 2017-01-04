@@ -1,3 +1,4 @@
+
 body {
   margin: 0 auto;
   width: 100%;
@@ -5,9 +6,19 @@ body {
   font-size: 10px;
 }
 
+h2 {
+  font-family: 'Karla';
+  font-size: 24px;
+  color: #ee6352;
+}
+
 section {
   margin: 0 auto;
   text-align: center;
+}
+
+.edit {
+  text-align: left;
 }
 
 table tr .notbody {
@@ -48,7 +59,7 @@ table tr .notbody {
 
 .banner a h2 span {
   color: white;
-  font: bold 24px 'Open Sans';
+  font: bold 24px 'Karla';
   letter-spacing: -1px;
   background: rgb(0, 0, 0); /* fallback color */
   background: rgba(0, 0, 0, 0.7);
@@ -192,23 +203,67 @@ label {
   margin-left: 5px;
 }
 
+#cke_description {
+  font-family: "Open Sans";
+}
+
+.route-title {
+  font-size: 24px;
+  font-family: "karla";
+  padding-bottom: 1em;
+  width: 80%;
+}
+
+.passageshare {
+  padding-top: 5em;
+  position: absolute;
+  top: 5em;
+  left: 10%;
+  right: 10%;
+  width: 80%;
+}
+
+.delete {
+  padding-top: 5em;
+  position: absolute;
+  top: 5em;
+  right: 10%;
+}
+
+.share {
+  position: absolute;
+  right: 0;
+}
+
 .passageshare input {
-  width: 400px;
-  display: block;
-  margin: 0 auto;
-}
-
-textarea {
-  width: 400px;
-  margin: 0 auto;
-  display: block;
-  outline: none;
-  border: 1px solid #d0d6e0;
-  vertical-align: text-top;
-}
-
-.passageshare button {
   display: inline-block;
+  margin: 0 auto;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px;
+}
+
+
+.passageshare button, .delete button {
+  display: inline-block;
+  align-items: flex-start;
+  text-align: center;
+  cursor: default;
+  box-sizing: border-box;
+  padding: 0.5em 1em;
+  color: white;
+  background-color: #ee6352;
+  box-shadow: 0 0.1em 0.1em 0 lightgrey;
+  font-family: "Open Sans";
+  border-radius: 3px;
+  font-size: 16px;
+  border: none;
+  float: right;
+}
+
+.passageshare button:hover {
+  background-color: #f18274;
 }
 
 .right {
@@ -230,6 +285,8 @@ h2 .popular {
 .hello {
   font-size: 24px;
   font-weight: bold;
+  font-family: 'karla';
+  color: #ee6352;
 }
 
 .slide {
@@ -253,4 +310,8 @@ h2 .popular {
 
 div .banner {
   width: 60em;
+}
+
+.fa-trash-o  {
+  color: white;
 }
