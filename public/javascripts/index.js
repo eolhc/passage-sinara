@@ -11,19 +11,19 @@ $(document).ready(function() {
           "mode": "hide"
       };
       var showoptions = {
-          "direction": "left",
+          "direction": "right",
           "mode": "show"
       };
 
       if (currentSlide.is(':last-child')) {
-          currentSlide.effect("slide", hideoptions, 200);
-          $("#slide0").effect("slide", showoptions, 200);
+          currentSlide.effect("slide", hideoptions, 1000);
+          $("#slide0").effect("slide", showoptions, 1000);
       }
       else {
-          currentSlide.effect("slide", hideoptions, 200);
-          nextSlide.effect("slide", showoptions, 200);
+          currentSlide.effect("slide", hideoptions, 1000);
+          nextSlide.effect("slide", showoptions, 1000);
       }
   };
-  setInterval(slideShow, 100);
+  setInterval(slideShow, 3000);
 
 })
