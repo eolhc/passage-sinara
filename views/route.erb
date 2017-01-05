@@ -1,36 +1,54 @@
 <section>
-  <h2> <%= @title %></h2>
 
-  <table>
+  <table class="passageshare">
 
-    <tr class="notbody">
+    <tr>
+      <td rowspan="2" colspan="1" class="thumbnail">
+        <% if logged_in? %>
+          <form action="/locations/<%=@route.location_id%>/<%=@route.id%>/bump" method="post" class="vote">
+            <button id="disable-vote"><i class="fa fa-thumbs-o-up" aria-hidden="true"> </i>  <%=@votes%></button>
+          </form>
+        <% else %>
+          <button><i class="fa fa-thumbs-o-up" aria-hidden="true"> </i>  <%=@votes%></button>
+        <% end %>
+      </td>
+      <td colspan="3" class="hide-margin">
+        <h2><%= @title %></h2>
+      </td>
+      <td rowspan="2" colspan="1" class="thumbnail">
+        <% if current_user %>
+          <% if current_user.username == @author_id %>
+            <form action="/locations/<%=@route.location_id%>/<%= @route.id %>/edit" method="get">
+              <button>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </button>
+            </form>
+          <% end %>
+        <% else %>
+
+        <% end %>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td colspan="3" class="subheading">
+        last edited on
+        <span class="detail"><%=@date%></span> by
+        <span class="detail"><%= @author_id %></span>
+      </td>
+
+    </tr>
+
+
+    <tr>
       <td colspan="5">
         <img src="<%=@img%>" alt="" width="100%">
       </td>
     </tr>
 
-    <tr class="notbody">
-      <td>last edited:</td>
-      <td><%= @date %></td>
-      <td>author:</td>
-      <td><%= @author_id %></td>
-      <td>
-        <form action="/locations/<%=@route.location_id%>/<%=@route.id%>/bump" method="post" class="vote">
-        <button></button>
-        <%=@votes%>
-        </form>
-      </td>
-    </tr>
-
     <tr>
       <td colspan="5"><%= @description %></td>
-    </tr>
-
-    <tr class="notbody">
-      <td colspan="4"></td>
-      <td>
-        <a href="/locations/<%=@route.location_id%>/<%=@route.id%>/edit">edit</a>
-      </td>
     </tr>
 
   </table>

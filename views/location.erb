@@ -28,7 +28,7 @@
               <%= key %>
             </br>
               <span class="subheading">
-                submitted on <%= value[3] %> by <%= value[4] %>
+                last edited on <%= value[3] %> by <%= value[4] %>
               </span>
             </a>
           </td>
@@ -37,11 +37,21 @@
       <% @number += 1 %>
     <% end %>
 
+    <tr class="empty-row">
+
+    </tr>
+
     <tr>
       <td colspan="3">
       </td>
-      <td colspan="2" class="right">
-        <a href="/locations/<%=params[:locationid] %>/new">Share a Passage?</a>
+      <td colspan="1" class="right">
+          <% if logged_in? %>
+            <a href="/locations/<%=params[:locationid] %>/new">
+              Share a Passage?
+            </a>
+          <% else %>
+            <a href="/session/new">Login</a> or <a href="/register">register</a> to share your passage.
+          <% end %>
       </td>
     </tr>
 

@@ -3,7 +3,7 @@ body {
   margin: 0 auto;
   width: 100%;
   font-family: 'Open Sans';
-  font-size: 10px;
+  font-size: 12px;
 }
 
 h2 {
@@ -21,6 +21,11 @@ section {
   text-align: left;
 }
 
+.location a img {
+  width: 400px;
+
+}
+
 
 .new img {
   width: 100%;
@@ -32,10 +37,10 @@ section {
 .banner a h2 {
   position: absolute;
   left: 0;
-  top: 50%;
+  top: 45%;
   width: 100%;
   z-index: 9999;
-  transform: translateY(-50%)
+  transform: translateY(-150%)
 }
 
 .banner a {
@@ -116,8 +121,7 @@ form {
 }
 
 table {
-  margin: 0 auto;
-  font-size: 12px;
+  margin: 3em auto;
   text-align: left;
   border-collapse: collapse;
 }
@@ -136,10 +140,12 @@ td {
   margin: 0;
 }
 
+.empty-row {
+  height: 1em;
+}
+
 table tr td a {
-  display:block;
-  height:100%;
-  width: 100%;
+  display: inline-block;
   text-decoration: none;
   color: #0000FF;
 
@@ -164,13 +170,17 @@ table tr td img {
   vertical-align: middle;
 }
 
+.hide-margin h2 {
+  margin: 0;
+}
+
 .thumbnail img {
   width: 4em;
   height: 3em;
 }
 
 .thumbnail {
-  width: 2em;
+  width: 5em;
   text-align: center;
 }
 
@@ -185,17 +195,16 @@ label {
   display: block;
 }
 
-.vote button {
+/*.vote button {
   width: 20px;
   height: 20px;
   background-color: white;
-  background-image: url('https://d30y9cdsu7xlg0.cloudfront.net/png/492589-200.png');
   border: none;
   background-repeat: no-repeat;
   background-size: 20px;
   vertical-align:middle;
   margin-left: 5px;
-}
+}*/
 
 .search button {
   width: 20px;
@@ -249,9 +258,18 @@ label {
   left: 10%;
 }
 
+
+.detail {
+  font-size: 12px;
+  color: #ee6352;
+
+}
+
 .subheading {
-  font-size: 10px;
-  font-family: "Open Sans"
+  font-size: 12px;
+  font-family: "Open Sans";
+  padding-left: 1em;
+  color: #0000FF;
 }
 
 .share {
@@ -259,7 +277,7 @@ label {
   right: 0;
 }
 
-.passageshare input {
+.passageshare input, .request input {
   display: inline-block;
   margin: 0 auto;
   border-top: 0;
@@ -269,8 +287,15 @@ label {
   width: 650px;
 }
 
+.request .route-title {
+  text-align: center;
+  margin: 0 auto;
+  padding-left: 0;
+  font-size: 20px;
+  border-bottom: 1px lightgrey solid;
+}
 
-.passageshare button, .delete button, .back button {
+.passageshare button, .delete button, .back button, .request button {
   display: inline-block;
   align-items: flex-start;
   text-align: center;
@@ -293,6 +318,8 @@ label {
 
 .right {
   text-align: right;
+  font-size: 12px;
+  display:none;
 }
 
 h2 .popular {
@@ -346,4 +373,5 @@ div .banner {
   font-size: 20px;
   font-family: "Karla";
   font-weight: 900;
+  color: #0000FF;
 }

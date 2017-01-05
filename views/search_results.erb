@@ -1,31 +1,35 @@
 <section>
-  <h2>search results</h2>
+  <h2>Search Results</h2>
 
-  <section class="new">
+  <div class="new">
 
     <% if @results.empty? %>
-      <p>There are no search results for your query.</p>
-      <p>Request other Passers to provide a passage. </p>
+      <p class="list">0 search results</p>
       <section class="new">
-          <form action="/locations" method="post">
-            <label for="">Location</label>
-            <input name="location" type="text">
-          </br>
+          <form action="/locations" method="post" class="request">
+            <input name="location" type="text" placeholder="Request Passage from other Passers" class="route-title" autofocus>
+          </br><br>
             <button>ASK PASSERS</button>
           </form>
       </section>
     <% else %>
       <% @results.each do |result| %>
-        <% if result.routes.first != nil %>
-          <a href="/locations/<%= result.id %>">
-            <img src="<%=result.routes.first.img.url%>" alt="">
-          </a>
+        <span class="banner location">
+          <% if result.routes.first != nil %>
+            <a href="/locations/<%= result.id %>">
+              <img src="<%=result.routes.first.img.url%>" alt="">
+              <div>
+                <h2><span><%=result.name%></span></h2>
+              </div>
+            </a>
+          </span>
         <% elsif result.routes.empty? %>
+          <p class="list">0 passages available for <%= result.name %></p>
           <a href="/locations/<%= result.id %>/new">
-            <img src="http://alisterpaine.com/wp-content/themes/15zine/library/images/placeholders/placeholder-759x500.png" alt="" width="40%" height="25%">
-            <p>Share your Passage</p>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            <span class="subheading">Share a Passage?</span>
         <% end %>
       <% end %>
-  <%end%>
-
+    <%end%>
+  </div>
 </section>

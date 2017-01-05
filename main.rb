@@ -145,7 +145,7 @@ post '/locations/:locationid/:routeid/bump' do
   @newvote.route_id = @routeid
   if Vote.where('user_id = ? AND route_id = ?', session[:user_id], @routeid)[0] != nil
     # if current_user.canVote(route)
-    @msg = "you can't vote again"
+    @msg = "VOTED"
     redirect to "/locations/#{@locid}/#{@routeid}"
   else
     @newvote.save
