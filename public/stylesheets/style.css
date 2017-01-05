@@ -21,9 +21,6 @@ section {
   text-align: left;
 }
 
-table tr .notbody {
-  font-size: 9px;
-}
 
 .new img {
   width: 100%;
@@ -140,9 +137,12 @@ td {
 }
 
 table tr td a {
-  display:inline-block;
+  display:block;
   height:100%;
+  width: 100%;
   text-decoration: none;
+  color: #0000FF;
+
 }
 
 table tr td img {
@@ -164,15 +164,21 @@ table tr td img {
   vertical-align: middle;
 }
 
-.nottext {
-  width: 50px;
-  text-align: center;
-  background-color: #00C4C0;
+.thumbnail img {
+  width: 4em;
+  height: 3em;
 }
 
-.text {
+.thumbnail {
+  width: 2em;
+  text-align: center;
+}
+
+.route-link {
   width: 300px;
   text-align: left;
+  font-family: "Open Sans";
+  font-size: 16px;
 }
 
 label {
@@ -205,6 +211,11 @@ label {
 
 #cke_description {
   font-family: "Open Sans";
+  display: block;
+}
+
+.carrierwave {
+  float: left;
 }
 
 .route-title {
@@ -212,6 +223,7 @@ label {
   font-family: "karla";
   padding-bottom: 1em;
   width: 80%;
+  padding-left: 10%;
 }
 
 .passageshare {
@@ -230,6 +242,18 @@ label {
   right: 10%;
 }
 
+.back {
+  padding-top: 5em;
+  position: absolute;
+  top: 5em;
+  left: 10%;
+}
+
+.subheading {
+  font-size: 10px;
+  font-family: "Open Sans"
+}
+
 .share {
   position: absolute;
   right: 0;
@@ -242,10 +266,11 @@ label {
   border-left: 0;
   border-right: 0;
   border-bottom: 1px;
+  width: 650px;
 }
 
 
-.passageshare button, .delete button {
+.passageshare button, .delete button, .back button {
   display: inline-block;
   align-items: flex-start;
   text-align: center;
@@ -255,7 +280,7 @@ label {
   color: white;
   background-color: #ee6352;
   box-shadow: 0 0.1em 0.1em 0 lightgrey;
-  font-family: "Open Sans";
+  font-family: "Karla";
   border-radius: 3px;
   font-size: 16px;
   border: none;
@@ -278,7 +303,7 @@ h2 .popular {
 .welcome {
   height: 30%;
   width: 80%;
-  padding: 0px 10% 10% 10%;
+  padding: 0px 10% 5% 10%;
   vertical-align: middle;
 }
 
@@ -314,4 +339,11 @@ div .banner {
 
 .fa-trash-o  {
   color: white;
+}
+
+.list {
+  font-style: italic;
+  font-size: 20px;
+  font-family: "Karla";
+  font-weight: 900;
 }

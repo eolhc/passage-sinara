@@ -71,6 +71,8 @@ end
 
 #show locations page
 get '/locations/:locationid' do
+  @number = 1
+
   @location = Location.find(params[:locationid])
   @name = @location.name
   @routes = @location.routes
@@ -81,10 +83,16 @@ get '/locations/:locationid' do
     @votes = route.votes.count
     @title = route.title
     @id = route.id
-    @routelist["#{@title}"] = ["#{@votes}","#{@id}"]
+    @img = route.img
+    @author_id = User.find(route.author_id).username
+    @date_authored = route.date_authored
+
+
+    @routelist["#{@title}"] = ["#{@votes}","#{@id}","#{@img}","#{@date_authored}","#{@author_id}"]
   end
 
   @orderedlist = @routelist.sort_by {|key, value| value[0]}.reverse
+
 
   erb :location
 end
@@ -171,7 +179,7 @@ post '/locations/:locationid/:routeid/delete' do
   @route = Route.where('id = ? AND location_id = ?', params[:routeid], params[:locationid])[0]
   @route.destroy
 
-  redirect to "/locations/#{params[:location_id]}"
+  redirect to "/"
 end
 
 #new session

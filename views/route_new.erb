@@ -9,10 +9,15 @@
 		    });
       </script>
     </br>
-      <input type="file" name="img" />
+      <input type="file" name="img" class="carrierwave" />
       <button class="share">SHARE</button>
 
     </form>
 
-      <!-- <i class="fa fa-arrow-left fa-4x" aria-hidden="true"></i> -->
-</section>
+    <form action="/locations/<%=@locid%>" method="get" class="back">
+      <button>
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      </button>
+    </form>
+
+  </section>

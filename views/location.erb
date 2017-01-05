@@ -1,27 +1,49 @@
 <section>
-  <h2> <%= @name %> </h2>
+  <h2> Passages to <%= @name %> </h2>
     <table>
-      <th colspan="3">Passages provided:</th>
       <% @orderedlist.each do |key, value| %>
-        <tr>
-          <td class="nottext">
-            <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/492589-200.png" alt="" width="20px">
+      <tr>
+
+          <td class="thumbnail">
+            <a href="/locations/<%= params[:locationid] %>/<%= value[1] %>" class="list">
+              <%= @number %>
+            </a>
+          </td>
+
+          <td class="thumbnail">
             <a href="/locations/<%= params[:locationid] %>/<%= value[1] %>">
+              <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
               <%= value[0] %>
             </a>
           </td>
-            <td class="text">
-              <a href="/locations/<%= params[:locationid] %>/<%= value[1] %>">
-                <%= key %>
-              </a>
-            </td>
-        <tr>
-      <% end %>
-      <tr>
-        <td colspan="1">
-        </td>
+
+          <td class="thumbnail">
+            <a href="/locations/<%= params[:locationid] %>/<%= value[1] %>">
+              <img src="<%= value[2] %>" alt="">
+            </a>
+          </td>
+
+          <td class="route-link">
+            <a href="/locations/<%= params[:locationid] %>/<%= value[1] %>">
+              <%= key %>
+            </br>
+              <span class="subheading">
+                submitted on <%= value[3] %> by <%= value[4] %>
+              </span>
+            </a>
+          </td>
+
+      </tr>
+      <% @number += 1 %>
+    <% end %>
+
+    <tr>
+      <td colspan="3">
+      </td>
       <td colspan="2" class="right">
         <a href="/locations/<%=params[:locationid] %>/new">Share a Passage?</a>
       </td>
-    </table>
+    </tr>
+
+  </table>
 </section>

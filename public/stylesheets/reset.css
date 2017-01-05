@@ -24,7 +24,7 @@ input:focus {
 input[type=button],
 input[type=submit],
 input[type=reset],
-input[type=file]::-webkit-file-upload-button {
+input[type=file]::-webkit-file-upload-button  {
   align-items: flex-start;
   text-align: center;
   cursor: default;
@@ -36,17 +36,10 @@ input[type=file]::-webkit-file-upload-button {
   box-shadow: 0 0.1em 0.1em 0 lightgrey;
   font-family: "Karla";
   border-radius: 3px;
+  text-transform: uppercase;
+  font-size: 16px;
 }
 
 input[type=file i]::-webkit-file-upload-button:hover {
   background-color: #f18274;
-  float: left;
-}
-
-input[type=file i]::-webkit-file-upload-button {
-  text-transform: uppercase;
-  font-size: 16px;
-  position: absolute;
-  left: 0;
-
 }

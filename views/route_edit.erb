@@ -12,13 +12,19 @@
     </script>
     </br>
 
-      <input type="file" name="img" />
+      <input type="file" name="img" class="carrierwave"/>
       <button class="share">
         <i class="fa fa-floppy-o" aria-hidden="true"></i>
       </button>
     </form>
 
-  <form action="/locations/<%=@route.location_id%>/<%= @route.id %>/delete" method="post" class="delete" class="delete">
+  <form action="/locations/<%=@route.location_id%>/<%= @route.id%>" method="get" class="back">
+    <button>
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    </button>
+  </form>
+
+  <form action="/locations/<%=@route.location_id%>/<%= @route.id %>/delete" method="post" class="delete">
     <button>
       <i class="fa fa-trash-o" aria-hidden="true"></i>
     </button>
