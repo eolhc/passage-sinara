@@ -3,4 +3,5 @@ $(document).ready(function() {
 
   $('#disable-vote').click(function(){
     $(this).attr('disabled','disabled')
+  });
 });
