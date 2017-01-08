@@ -183,10 +183,10 @@ post '/locations/:locationid/:routeid/delete' do
 end
 
 #new session
-get '/session/new' do
-
-  erb :session_new
-end
+# get '/session/new' do
+#
+#   erb :session_new
+# end
 
 post '/session' do
   @user = User.find_by(username: params[:username])
@@ -197,14 +197,14 @@ post '/session' do
 
     redirect to '/'
   else #whoaare you
-    erb :session_new
+    erb :index
   end
 end
-
-get '/register' do
-
-  erb :register
-end
+#
+# get '/register' do
+#
+#   erb :register
+# end
 
 post '/register' do
   user = User.new
@@ -221,12 +221,12 @@ post '/register' do
     @msg = "email already in use"
     erb :register
   else user.save
-      redirect to '/session/new'
+      redirect to '/'
   end
 end
 
 delete '/session' do
   session[:user_id] = nil
   #remove the session
-  redirect to '/session/new'
+  redirect to '/'
 end

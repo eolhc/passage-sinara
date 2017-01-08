@@ -35,8 +35,10 @@
       </span>
       </form></li>
       <% else %>
-        <li><a href="/session/new">login</a></li>
-        <li><a href="/register">register</a></li>
+        <span class="logout">
+          <button id="login-btn">login</button> /
+          <button id="register-btn">register</button>
+        </span>
       <% end %>
     </ul>
   </nav>
