@@ -6,25 +6,25 @@ $(document).ready(function() {
     $('#get-started').fadeOut(1000);
   })
 
-  if ($('.logout').css("display") == "block") {
+  if ($('.log').css("display") == "block" && $('.welcome').length > 0) {
     $('#get-started').fadeIn(1000);
     setTimeout(function() {
       $('#greeting').children().each(function(index) { $(this).delay(100 * index).effect("bounce",{times:1},"slow")})
     },2000);
   }
 
-
-  $('#login-btn').on("click",function(){
+  $('.login-btn').on("click",function(){
+    $('#get-started').fadeIn(1000);
     setTimeout(function() {
       $('#greeting').children().each(function(index) { $(this).delay(100 * index).effect("bounce",{times:1},"slow")})
     },2000);
-    $('#get-started').fadeIn(1000);
     $('.start').hide();
     $('.register').hide();
     $('.login').show();
   })
 
-  $('#register-btn').on("click",function(){
+  $('.register-btn').on("click",function(){
+    $('#get-started').fadeIn(1000);
     setTimeout(function() {
       $('#greeting').children().each(function(index) { $(this).delay(100 * index).effect("bounce",{times:1},"slow")})
     },2000);

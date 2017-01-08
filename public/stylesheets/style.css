@@ -164,7 +164,7 @@ table tr td img {
 }
 
 
-.logout button {
+.log button {
    background:none!important;
    border:none;
    padding:0 1em !important;
@@ -172,6 +172,23 @@ table tr td img {
    border-bottom:0px solid #444;
    cursor: pointer;
    text-decoration: none;
+   color: #0000FF;
+}
+
+
+.reminder-log button {
+   background:none!important;
+   border:none;
+   padding:0 !important;
+   font: inherit;
+   border-bottom:0px solid #444;
+   cursor: pointer;
+   text-decoration: none;
+   color: #0000FF;
+}
+
+.reminder-log {
+  font-size: 11px;
 }
 
 .new {

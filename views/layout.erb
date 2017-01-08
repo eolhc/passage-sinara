@@ -30,20 +30,85 @@
       <li><a href="/"><%= current_user.username %></a></li>
       <li><form action="/session" method="post">
         <input name="_method" type="hidden" value="delete">
-      <span class="logout">
+      <span class="log">
         <button>logout</button>
       </span>
       </form></li>
       <% else %>
-        <span class="logout">
-          <button id="login-btn">login</button> /
-          <button id="register-btn">register</button>
+        <span class="log">
+          <button class="login-btn">Log In</button> /
+          <button class="register-btn">Register</button>
         </span>
       <% end %>
     </ul>
   </nav>
 
     <%= yield %>
+
+  <section id="get-started">
+
+
+    <div class="start">
+      <span class="close"><button><i class="fa fa-times" aria-hidden="true"></i></button></span>
+
+      <h2 id="greeting">
+        <span>p</span><span>a</span><span>s</span><span>s</span><span>a</span><span>g</span><span>e</span>
+      </h2>
+      <div id="fix-start">
+        <p>Find your passage</p>
+        <span id="register"><button type="button">Get Started</button></span>
+        <span id="login"><button type="button">Log In</button></span>
+        <span class="overlay-back">
+          <button>
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+          </button>
+        </span>
+      </div>
+    </div>
+
+    <div class="register">
+      <span class="close"><button><i class="fa fa-times" aria-hidden="true"></i></button></span>
+
+      <h3>Hello, Passenger!</h3>
+      <p>Journey along with others.</p>
+      <p>Join to share and upvote passages.</p>
+      <%= @msg %>
+
+      <form action="/register" method="post">
+        <input name="email" type="text" placeholder="email" autofocus>
+        <input name="password" type="password" placeholder="password">
+        <input name="username" type="text" placeholder="username">
+        <button>Sign Up</button>
+      </form>
+      <span class="overlay-back">
+        <button>
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </button>
+      </span>
+    </div>
+
+    <div class="login">
+      <span class="close"><button><i class="fa fa-times" aria-hidden="true"></i></button></span>
+
+      <h3>Welcome back, Passenger!</h3>
+      <p>Where would you like to go today?</p>
+      <p>A new journey awaits.</p>
+      <br>
+      <%= @msg %>
+      <form action="/session" method="post">
+        <input name="username" type="text" placeholder="username" autofocus>
+        <input name="password" type="password" placeholder="password">
+        <button>Log In</button>
+      </form>
+      <span class="overlay-back">
+        <button>
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </button>
+      </span>
+    </div>
+
+  </section>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" charset="utf-8"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
